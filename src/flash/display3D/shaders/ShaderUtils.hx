@@ -5,7 +5,7 @@
 package flash.display3D.shaders;
 
 #if (cpp || neko || js)
-import flash.gl.GL;
+import openfl.gl.GL;
 #elseif flash
 import flash.utils.ByteArray;
 import com.adobe.utils.AGALMiniAssembler;

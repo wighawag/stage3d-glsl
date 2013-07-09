@@ -41,7 +41,7 @@ class GLSLFragmentShader extends GLSLShader{
         context3D.setTextureAt( registerIndex, texture);
         #elseif (cpp || neko || js)
         context3D.setGLSLTextureAt(name, texture, textureCounter);
-        textureCounter ++;
+        textureCounter ++; // TODO improve
         #end
     }
 
