@@ -4,7 +4,7 @@
   "license": "GPL",
   "tags": ["cross","3d"],
   "description": "a wrapper to stage3d api to use glsl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "releasenote": "",
   "contributors": ["wighawag"],
   "dependencies": {},
