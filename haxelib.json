@@ -1,6 +1,6 @@
 {
-  "name": "stage3d-glsl-wrapper",
-  "url" : "https://github.com/wighawag/stage3d-glsl-wrapper/",
+  "name": "stage3d-glsl",
+  "url" : "https://github.com/wighawag/stage3d-glsl/",
   "license": "GPL",
   "tags": ["cross","3d"],
   "description": "a wrapper to stage3d api to use glsl",
