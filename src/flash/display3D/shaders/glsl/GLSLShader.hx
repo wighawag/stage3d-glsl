@@ -86,11 +86,17 @@ class GLSLShader {
 
             #if glsl2agal
                 if(agalInfoJson == null){ // compute agal from glsl only if no agalInfo are provided
-                    var glsl2agal = new nme.display3D.shaders.GlslToAgal(glslSource, cast(type)); //TODO get rid of nme package ?
+                    var glsl2agal = new glsl.GlslToAgal(glslSource, cast(type)); //TODO get rid of nme package ?
                     agalInfoJson = glsl2agal.compile();
+                }
+                if(agalInfoJson == null){
+                    throw "glsl2agal failed to generate agal from the glsl specified\n"+glslSource;
                 }
             #end
 
+            if(agalInfoJson==null){
+                throw "need to specify agalInfoJson if not using glsl2agal";
+            }
             var agalInfoData : AgalInfoData = Json.parse(agalInfoJson);
             agalInfo = new AgalInfo(agalInfoData);
             var agalSource = agalInfo.agalasm;
