@@ -45,9 +45,8 @@ class GLSLFragmentShader extends GLSLShader{
         #end
     }
 
-
+    #if (cpp || js || flash11_6)
     public function setSamplerStateAt(context3D : Context3D, name : String, wrap:Context3DWrapMode, filter:Context3DTextureFilter, mipfilter:Context3DMipFilter){
-        //TODO support flash  < 11.6
         #if flash
         var registerIndex = getRegisterIndexForSampler(name);
         context3D.setSamplerStateAt( registerIndex, wrap, filter, mipfilter);
@@ -55,6 +54,7 @@ class GLSLFragmentShader extends GLSLShader{
         context3D.setGLSLSamplerStateAt(name, wrap, filter, mipfilter);
         #end
     }
+    #end
 
     override private function getRegisterIndexForUniform(name : String) : Int{
         var registerName = agalInfo.varnames.get(name);

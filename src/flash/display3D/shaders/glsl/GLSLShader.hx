@@ -86,7 +86,7 @@ class GLSLShader {
 
             #if glsl2agal
                 if(agalInfoJson == null){ // compute agal from glsl only if no agalInfo are provided
-                    var glsl2agal = new glsl.GlslToAgal(glslSource, cast(type)); //TODO get rid of nme package ?
+                    var glsl2agal = new glsl.GlslToAgal(glslSource, cast(type));
                     agalInfoJson = glsl2agal.compile();
                 }
                 if(agalInfoJson == null){
@@ -100,7 +100,6 @@ class GLSLShader {
             var agalInfoData : AgalInfoData = Json.parse(agalInfoJson);
             agalInfo = new AgalInfo(agalInfoData);
             var agalSource = agalInfo.agalasm;
-
 
             nativeShader = ShaderUtils.createShader(type,agalSource);
         #end
@@ -116,6 +115,7 @@ class GLSLShader {
         #end
     }
 
+    #if (cpp || js || flash11_2)
     // expect 4 values
     public function setUniformFromByteArray(context3D : Context3D, name : String, data:ByteArray, byteArrayOffset:Int) : Void{
         #if flash
@@ -126,6 +126,7 @@ class GLSLShader {
         #end
 
     }
+    #end
 
     // TODO do not use vector but use 4 float arguments ?
     // for now it only use the first 4 float in the vector

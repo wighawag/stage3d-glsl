@@ -61,22 +61,29 @@ class GLSLProgram {
         fragmentShader.setUniformFromVector(context3D,name,vector);
     }
 
+    #if (cpp || js || flash11_2)
     public function setVertexUniformFromByteArray(name : String , data : flash.utils.ByteArray, byteArrayOffset : Int) : Void{
         vertexShader.setUniformFromByteArray(context3D,name,data,byteArrayOffset);
     }
+    #end
 
+    #if (cpp || js || flash11_2)
     public function setFragmentUniformFromByteArray(name : String , data : flash.utils.ByteArray, byteArrayOffset : Int) : Void{
         fragmentShader.setUniformFromByteArray(context3D,name,data, byteArrayOffset);
     }
+    #end
 
     //AGAL only allow texture for fragment shader
     // TODO add a function in cpp to set texture and sampler params on vertex shader
     public function setTextureAt(name : String , texture : Texture) : Void{
         fragmentShader.setTextureAt(context3D,name,texture);
     }
+
+    #if (cpp || js || flash11_6)
     public function setSamplerStateAt(name:String, wrap:Context3DWrapMode, filter:Context3DTextureFilter, mipfilter:Context3DMipFilter):Void{
         fragmentShader.setSamplerStateAt(context3D, name, wrap, filter, mipfilter);
     }
+    #end
 
     public function setVertexBufferAt(name : String, vertexBuffer : VertexBuffer3D, bufferOffset : Int, format : Context3DVertexBufferFormat) : Void{
         vertexShader.setVertexBufferAt(context3D,name,vertexBuffer,bufferOffset,format);
